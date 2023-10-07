@@ -1,0 +1,13 @@
+Try to improve 
+if same yelp store link then it will skip 2nd time when scraping
+
+1. remove others state row
+2. remove others categories row
+3. CA badea baki state gulo r jnno pura row kivvhea dlt kora jai
+4. How to know how much row city in a single column
+
+Have to clear merge cell to unmerge cell
+SteP:
+Select all column - Unmerge cell
+Then just remove the duplicate
+

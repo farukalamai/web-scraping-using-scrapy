@@ -1,0 +1,76 @@
+def parse_item(self, response):
+        # First Section of the yelp store like
+        # Name, Image, Photo, rating, review, Dollar Sign, Category
+        name = response.xpath("//h1/text()").get()
+        try:
+            rating = response.xpath("//div[@class=' five-stars__09f24__mBKym five-stars--large__09f24__Waiqf display--inline-block__09f24__fEDiJ border-color--default__09f24__NPAKY']/@aria-label").get()
+        except:
+            rating = ''
+        try:
+            review = response.xpath("//div[@class=' arrange-unit__09f24__rqHTg arrange-unit-fill__09f24__CUubG border-color--default__09f24__NPAKY nowrap__09f24__lBkC2']/span/text()").get()
+        except:
+            review = ''
+        try:
+            dolar_sign = response.xpath("//span[@class=' css-1ir4e44']/text()").get()
+        except:
+            dolar_sign = ''
+        try:
+            category_1 = response.xpath("//span[@class=' css-1fdy0l5'][1]/a[@class='css-1m051bw']/text()").get()
+        except:
+            category_1 = ''
+        try:
+            category_2 = response.xpath("//span[@class=' css-1fdy0l5'][2]/a[@class='css-1m051bw']/text()").get()
+        except:
+            category_2 = ''
+        try:
+            category_3 = response.xpath("//span[@class=' css-1fdy0l5'][3]/a[@class='css-1m051bw']/text()").get()
+        except:
+            category_3 = ''
+        try:
+            image_1 = response.xpath("//div[@class=' photo-header-media__09f24__ojlZt photo-header-media--overlay__09f24__KwCp5 display--inline-block__09f24__fEDiJ border-color--default__09f24__NPAKY'][1]/a/img/@src").get()
+        except:
+            image_1 = ''
+        try:
+            image_2 = response.xpath("//div[@class=' photo-header-media__09f24__ojlZt photo-header-media--overlay__09f24__KwCp5 display--inline-block__09f24__fEDiJ border-color--default__09f24__NPAKY'][2]/a/img/@src").get()
+        except:
+            image_2 = ''
+        try:
+            image_3 = response.xpath("//div[@class=' photo-header-media__09f24__ojlZt photo-header-media--overlay__09f24__KwCp5 display--inline-block__09f24__fEDiJ border-color--default__09f24__NPAKY'][3]/a/img/@src").get()
+        except:
+            image_3 = ''
+        try:
+            image_4 = response.xpath("//div[@class=' photo-header-media__09f24__ojlZt photo-header-media--overlay__09f24__KwCp5 display--inline-block__09f24__fEDiJ border-color--default__09f24__NPAKY'][4]/a/img/@src").get()
+        except:
+            image_4 = ''
+        try:
+            image_5 = response.xpath("//div[@class=' photo-header-media__09f24__ojlZt photo-header-media--overlay__09f24__KwCp5 display--inline-block__09f24__fEDiJ border-color--default__09f24__NPAKY'][5]/a/img/@src").get()
+        except:
+            image_5 = ''
+        
+        # Address, Phone, Website,
+        phone = response.xpath("//div[@class=' arrange-unit__09f24__rqHTg arrange-unit-fill__09f24__CUubG border-color--default__09f24__NPAKY']/p[@class=' css-1p9ibgf']/text()").get()
+        # Have to change the website and Have to split the address
+        website = response.xpath("(//div[@class=' arrange-unit__09f24__rqHTg arrange-unit-fill__09f24__CUubG border-color--default__09f24__NPAKY']/p[@class=' css-1p9ibgf']/a/@href)[1]").get()
+        address = response.xpath("//div[@class=' arrange-unit__09f24__rqHTg arrange-unit-fill__09f24__CUubG border-color--default__09f24__NPAKY']/p[@class=' css-qyp8bo']/text()").get()
+        
+        #Recent Reviews
+        
+
+
+        yield {
+            'Name': name,
+            'Address': address,
+            'Phone': phone,
+            'Website': website,
+            'Rating': rating,
+            'Reviews': review,
+            'Dolar Sign': dolar_sign,
+            'Category 1': category_1,
+            'Category 2': category_2,
+            'Category 3': category_3,
+            'Image 1': image_1,
+            'Image 2': image_2,
+            'Image 3': image_3,
+            'Image 4': image_4,
+            'Image 5': image_5
+        }
